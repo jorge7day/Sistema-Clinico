@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.controller;
 
 /**
  *
@@ -47,5 +46,10 @@ public class controlador {
   @RequestMapping(value="/usuarios.htm", method=RequestMethod.GET)
     public String usuarios(){
         return "usuarios";
+    }
+    
+    @RequestMapping(value="/consultas.htm", method=RequestMethod.GET)
+    public String consultas(){
+        return "consultas";
     }
 }

@@ -94,13 +94,13 @@
         <c:forEach items ="${listaClinicas}" var ="pac">
         <tbody>
           <tr>
-            <td>${pac.codclinica}</td>
+            <td>${pac.codClinica}</td>
             <td>${pac.nombre}</td>
             <td>${pac.direccion}</td>
             <td>${pac.telefono}</td>
             
             <td>
-            <a href="editClinicas.htm?codlinica=${pac.codclinica}">Editar </a>
+            <a href="editClinica.htm?codClinica=${pac.codClinica}">Editar </a>
             
             </td>
           </tr>        

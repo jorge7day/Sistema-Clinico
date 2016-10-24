@@ -5,7 +5,9 @@
  */
 package model;
 
+import controller.Sesion;
 import entity.Municipio;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -86,8 +88,8 @@ public void update(Municipio p){
     }   
  }
 
-public Municipio getPacientes (int codMunicipio){
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+public Municipio getMunicipioById (BigDecimal codMunicipio){
+    Session s = Sesion.getSession();
     Municipio pac = new Municipio();
     
     try{

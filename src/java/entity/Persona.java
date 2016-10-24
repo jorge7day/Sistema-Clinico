@@ -1,5 +1,5 @@
 package entity;
-// Generated 10-23-2016 01:47:09 PM by Hibernate Tools 4.3.1
+// Generated 10-23-2016 11:08:44 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -92,7 +92,7 @@ public class Persona  implements java.io.Serializable {
         this.codPersona = codPersona;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_DEPARTAMENTO", nullable=false)
     public Departamento getDepartamento() {
         return this.departamento;
@@ -102,7 +102,7 @@ public class Persona  implements java.io.Serializable {
         this.departamento = departamento;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_MUNICIPIO", nullable=false)
     public Municipio getMunicipio() {
         return this.municipio;
@@ -222,7 +222,7 @@ public class Persona  implements java.io.Serializable {
         this.genero = genero;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="persona")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="persona")
     public Set<Usuario> getUsuarios() {
         return this.usuarios;
     }
@@ -231,7 +231,7 @@ public class Persona  implements java.io.Serializable {
         this.usuarios = usuarios;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="persona")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="persona")
     public Set<Paciente> getPacientes() {
         return this.pacientes;
     }
@@ -240,7 +240,7 @@ public class Persona  implements java.io.Serializable {
         this.pacientes = pacientes;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="persona")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="persona")
     public Set<Empleado> getEmpleados() {
         return this.empleados;
     }

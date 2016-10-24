@@ -8,19 +8,19 @@
     <property name="hibernate.connection.username">toouser</property>
     <property name="hibernate.connection.password">toouser</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <mapping class="entity.Departamento"/>
+    <mapping class="entity.Paciente"/>
     <mapping class="entity.Empleado"/>
-    <mapping class="entity.Medicamento"/>
-    <mapping class="entity.Expediente"/>
+    <mapping class="entity.Rol"/>
+    <mapping class="entity.Persona"/>
+    <mapping class="entity.Clinica"/>
     <mapping class="entity.Especialidad"/>
     <mapping class="entity.Signosvitales"/>
-    <mapping class="entity.Usuario"/>
-    <mapping class="entity.Departamento"/>
+    <mapping class="entity.Expediente"/>
     <mapping class="entity.Municipio"/>
-    <mapping class="entity.Receta"/>
-    <mapping class="entity.Rol"/>
-    <mapping class="entity.Clinica"/>
-    <mapping class="entity.Paciente"/>
-    <mapping class="entity.Persona"/>
     <mapping class="entity.Medico"/>
+    <mapping class="entity.Usuario"/>
+    <mapping class="entity.Receta"/>
+    <mapping class="entity.Medicamento"/>
   </session-factory>
 </hibernate-configuration>

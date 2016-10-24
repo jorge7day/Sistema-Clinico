@@ -7,7 +7,7 @@ package controller;
 
 
 
-import model.UsuariosModel;
+import model.UsuarioModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +23,8 @@ public class IndexController {
     
     @RequestMapping(value="getAllUsers",method = RequestMethod.GET)
     public String getAll(Model m){
-   UsuariosModel model= new UsuariosModel();
-    m.addAttribute("listaUsuarios",model.getAllUsers());
+   UsuarioModel model= new UsuarioModel();
+    m.addAttribute("listaUsuarios",model.getAll());
     
     return "index"; //Pag donde se muestran los datos
     }

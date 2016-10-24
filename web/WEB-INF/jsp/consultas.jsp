@@ -37,7 +37,7 @@
 
           <li><div class="divider"></div></li>
 
-          <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
+          <!--<li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
           <li class="bold"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
           <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
           <li class="bold"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
@@ -46,7 +46,7 @@
            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
+            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>-->
             <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
 
           </ul>
@@ -90,18 +90,18 @@
             <div class="container">
             <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" length="500"></textarea>
-            <label for="textarea1">SintomatologÃ­a</label>
+            <label for="textarea1">Sintomatología</label>
             </div>
 
              
             <div class="input-field col s12">
             <textarea id="textarea2" class="materialize-textarea" length="500"></textarea>
-            <label for="textarea2">Diagnostico</label>
+            <label for="textarea2">Diagnóstico</label>
             </div>
 
             <div class="input-field col s12">
             <textarea id="textarea3" class="materialize-textarea" length="500"></textarea>
-            <label for="textarea3">Tratamiento mÃ©dico</label>
+            <label for="textarea3">Tratamiento médico</label>
             </div>
 
             <div class="row">
@@ -113,8 +113,8 @@
 
           <div class="input-field col s6">
           <input id="medico" type="text" class="validate">
-          <label for="medico">MÃ©dico que atendiÃ³</label>
             </div>
+                
 
 
             <div class="row">

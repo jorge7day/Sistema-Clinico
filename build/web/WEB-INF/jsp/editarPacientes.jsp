@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags"%>
+
 
 <!DOCTYPE html>
   <html>
@@ -24,7 +26,7 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Usuarios</title>
+      <title>Crear Pacientes</title>
 </head>
 
    <body>
@@ -39,8 +41,8 @@
           <li><div class="divider"></div></li>
 
           <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
-          <li class="bold active"><a href="" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
-          <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
+          <li class="bold"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
+          <li class="bold active"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
           <li class="bold"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
 
 
@@ -74,45 +76,41 @@
   <br>
 
 
-<!-- formulario en un modal -->
-    <!-- Modal Trigger -->
-  <!--<a class="waves-effect waves-light btn modal-trigger #ffd600 yellow accent-4"  href="#modal1" id="addbuton"><i class="material-icons left ">person_add</i>Agregar paciente</a>-->
-  <a href="crearUsers.htm" class="waves-effect waves-teal btn"><i class="material-icons">book</i>Crear Usuario</a>
-  
+
 <!-- tabla de resultados -->
-<a href="getAllUsuarios.htm" class="waves-effect waves-teal btn"><i class="material-icons">book</i>Ver Usuarios</a>
+<a href="getAll.htm" class="waves-effect waves-teal btn"><i class="material-icons">book</i>Ver Pacientes</a>
 <!--<a class="waves-effect waves-light btn modal-trigger #ffd600 yellow accent-4"  href="#modal1" id="addbuton"><i class="material-icons left ">book</i>Ver lista de pacientes</a>-->
 
 <div class ="row"></div>
-<div class="container">
-<table class="highlight centered">
-        <thead>
-          <tr>
-              <th data-field="id">Nickname </th>
-              <th data-field="name">Contraseña</th>
-              <th data-field="price">Rol</th>
-              <th data-field="price">CodPersona</th>
-              <th data-field="price">Opciones</th>
-          </tr>
-        </thead>
-
-        <c:forEach items ="${listaUsuarios}" var ="pac">
-        <tbody>
-          <tr>
-            <td>${pac.nombre}</td>
-            <td>${pac.contrasena}</td>
-            <td>${pac.rol.nombre}</td>
-            <td>${pac.persona.nombre}</td>
-            
-            <td>
-            <a href="editUsers.htm?nombreUsuario=${pac.nombre}">Editar </a>
-            <a href="removeUsers.htm?nombreUsuario=${pac.nombre}" onclick="return confirm('Are you sure?')"> Eliminar</a>
-            </td>
-          </tr>        
-        </tbody>
-        </c:forEach>
-      </table>
+<div class="modal-content">
+    <f:form action="update.htm" modelAttribute="Clinicas" method="POST">
     
+
+        <div class="row">
+                  <div class="input-field col s3">
+                  <input id="codclinicaid" type="text" name ="codclinica" value="${p.coclinica}" class="validate">
+                  <label for="codclinicaid">ID</label>
+                </div>
+                  
+                <div class="input-field col s3">
+                  <input id="nombreid" name ="nombre" type="text" class="validate">
+                  <label for="nombre">Nombre de la Sucursal</label>
+                </div>
+                <div class="input-field col s3">
+                  <input id="Dirección" name ="direccion" type="text" class="validate">
+                  <label for="Dirección">Dirección</label>
+                </div>
+                <div class="input-field col s3">
+                  <input id="telefono" name="telefono" type="text" class="validate">
+                  <label for="telefono">Teléfono</label>
+                </div>
+              </div>
+              </div>
+              
+    <button class="btn waves-effect waves-light" type="submit" name="">Actualizar Clinica</button>
+     <a class="waves-effect waves-light btn red"  href="clinicas.htm"><i class="material-icons left ">person_add</i>Cancelar</a>
+        
+   </f:form>
 </div>
 </main>
 
@@ -137,5 +135,3 @@
 
 </body>
 </html>
-
-

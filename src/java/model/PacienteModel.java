@@ -5,7 +5,8 @@
  */
 package model;
 
-import entity.Pacientes;
+import entity.Paciente;
+//import entity.Pacientes;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -17,14 +18,14 @@ import org.hibernate.Session;
 public class PacienteModel {
     
 //CRUD
-public List <Pacientes> getAll(){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
+public List <Paciente> getAll(){
+    List <Paciente> listaPacientes = new ArrayList<Paciente>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
         
        s.beginTransaction();
-       listaPacientes = s.createCriteria(Pacientes.class).list();
+       listaPacientes = s.createCriteria(Paciente.class).list();
        s.getTransaction().commit();
        HibernateUtil.getSessionFactory().getCurrentSession().close(); //Se debe cerrar la sesión después de cada transacción
 
@@ -37,8 +38,8 @@ public List <Pacientes> getAll(){
  }
 
 //Create
-public void create(Pacientes p){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
+public void create(Paciente p){
+    List <Paciente> listaPacientes = new ArrayList<Paciente>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
@@ -54,8 +55,8 @@ public void create(Pacientes p){
  }
 
 //Remove
-public void remove(Pacientes p){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
+public void remove(Paciente p){
+    List <Paciente> listaPacientes = new ArrayList<Paciente>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
@@ -88,13 +89,13 @@ public void update(Paciente p){
     }   
  }
 
-public Pacientes getPacientes (String idAfiliado){
+public Paciente getPacienteById (String idAfiliado){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    Pacientes pac = new Pacientes();
+    Paciente pac = new Paciente();
     
     try{
         s.beginTransaction();
-        pac = (Pacientes) s.get(Pacientes.class, idAfiliado);
+        pac = (Paciente) s.get(Paciente.class, idAfiliado);
         HibernateUtil.getSessionFactory().getCurrentSession().close();
     }catch(Exception e){
         e.printStackTrace();
@@ -104,7 +105,7 @@ public Pacientes getPacientes (String idAfiliado){
 }
 
 //edit
-      public void edit(Pacientes p)
+      public void edit(Paciente p)
     {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         try {

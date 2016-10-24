@@ -26,7 +26,7 @@
 
           <li><div class="divider"></div></li>
 
-          <li class="bold"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
+          <li class="bold"><a href="getAllUsuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
           <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
           <li class="bold"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
 

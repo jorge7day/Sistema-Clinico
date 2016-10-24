@@ -6,12 +6,13 @@
 package controller;
 
 import entity.Usuario;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import model.UsuarioModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +52,14 @@ public class sesionController {
             String hash = (new HexBinaryAdapter()).marshal(dig.digest()).toLowerCase();
             
             if(user.getContrasena().equals(hash)) {
-                return "redirect:principal.htm";
+                switch(user.getRol().getCodRol().intValueExact()) {
+                    case 1:
+                        return "redirect:principal.htm";
+                    case 2:
+                        return "redirect:consultas.htm";
+                    default:
+                        return "redirect:index.htm";
+                }
             }
             else {
                 return "redirect:index.htm";

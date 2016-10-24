@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MedicoController {
     
- @RequestMapping(value="/medicos.htm", method=RequestMethod.GET)
+ @RequestMapping(value="/medicos2.htm", method=RequestMethod.GET)
  
     public String medico(Model m){
         

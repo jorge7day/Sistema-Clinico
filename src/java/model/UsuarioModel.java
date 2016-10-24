@@ -5,12 +5,12 @@
 */
 package model;
 
-import controller.Sesion;
-import entity.Rol;
 import entity.Usuario;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.NonUniqueResultException;
+import javax.persistence.Query;
 import org.hibernate.Session;
 
 /**
@@ -21,67 +21,64 @@ public class UsuarioModel {
     
     public List <Usuario> getAll(){
         List <Usuario> lista = new ArrayList<>();
-        Session s = Sesion.getSession();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
             
             s.beginTransaction();
-            lista = s.createCriteria(Usuario.class).list();
+            org.hibernate.Query q = s.createQuery("from Usuario u");
+            lista = q.list();
             s.getTransaction().commit();
-            
         }catch(Exception e){
             e.printStackTrace();
-            
         }
-            Sesion.closeSession();
         
         return lista;
     }
     
 //Create
     public void create(Usuario u){
-        List <Usuario> listaRoles = new ArrayList<>();
-        Session s = Sesion.getSession();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
             
-            s.beginTransaction();
-            s.save(u);
-            s.getTransaction().commit();
-            
+//            s.beginTransaction();
+s.save(u);
+s.getTransaction().commit();
+
         }catch(Exception e){
             e.printStackTrace();
             
         }
-            Sesion.closeSession();
+//            Sesion.closeSession();
     }
     
 //Remove
     public void remove(Usuario u){
         List <Usuario> listaRoles = new ArrayList<>();
-        Session s = Sesion.getSession();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
-            
             s.beginTransaction();
-            s.delete(u);
-            s.getTransaction().commit();
-            
+//            Usuario ux = (Usuario) s.merge(u);
+s.delete(u);
+s.getTransaction().commit();
+
         }catch(Exception e){
             e.printStackTrace();
             
         }
-            Sesion.closeSession();
     }
     
 //Update
     public void update(Usuario u){
         List <Usuario> listaRoles = new ArrayList<>();
-        Session s = Sesion.getSession();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
-            
-            s.beginTransaction();
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
             s.update(u);
             s.getTransaction().commit();
             
@@ -90,36 +87,36 @@ public class UsuarioModel {
             s.getTransaction().rollback();
             
         }
-            Sesion.closeSession();
+//            Sesion.closeSession();
     }
     
-    public Usuario findUsuarioById (int codUsuario){
-        Session s = Sesion.getSession();
+    public Usuario findUsuarioById (BigDecimal codUsuario){
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         Usuario pac = new Usuario();
         
         try{
             s.beginTransaction();
             pac = (Usuario) s.get(Usuario.class, codUsuario);
-            
+            s.getTransaction().commit();
         }catch(Exception e){
             e.printStackTrace();
         }
-        Sesion.closeSession();
-        
-        return pac;
+//        Sesion.closeSession();
+
+return pac;
     }
     
     public Usuario findUsuarioByUserName(String userName)  {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         Usuario u = null;
         
         try{
-            List<Usuario> users = getAll();
+            s.beginTransaction();
+            org.hibernate.Query q = s.createQuery("from Usuario u where u.nombre = :userName");
+            q.setString("userName", userName);
             
-            for (Usuario x : users) {
-                if (x.getNombre().equals(userName)) {
-                    return x;
-                }
-            }
+            u = (Usuario) q.uniqueResult();
+            s.getTransaction().commit();
         }catch(NullPointerException | NonUniqueResultException e){
             e.printStackTrace();
         }

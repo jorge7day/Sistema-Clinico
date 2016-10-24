@@ -6,7 +6,10 @@
 package controller;
 
 import entity.Paciente;
+import entity.Persona;
 import java.math.BigDecimal;
+//import entity.Pacientes;
+import java.util.Date;
 import model.PacienteModel;
 import model.PersonaModel;
 import org.springframework.stereotype.Controller;
@@ -103,10 +106,10 @@ public class PacienteController {
         //java.math.BigDecimal bd=new java.math.BigDecimal(String.valueOf(idAfiliado));
         PacienteModel model= new PacienteModel();
        
-        Pacientes p =new Pacientes();
+        Paciente p =new Paciente();
 //        Departamento dp=new Departamento();
 //        DepartamentoModel dpModel= new DepartamentoModel();
-        p=model.getPacientes(idAfiliado); //Se obtiene el paciente segun si Id que es un String
+        p=model.getPacienteById(idAfiliado); //Se obtiene el paciente segun si Id que es un String
 //        dp=dpModel.getDepartamento(p.getDepartamento().getId());
         
         m.addAttribute("p",p);
@@ -129,9 +132,12 @@ public class PacienteController {
             
     {
         
-        PacienteModel model = new PacienteModel();
+//        PacienteModel model = new PacienteModel();
         
-        Pacientes p = model.getPacientes(idAfiliado);
+//        Paciente p = model.getPacientes(idAfiliado);
+        PersonaModel model = new PersonaModel();
+        
+        Persona p = model.getPersonaById(BigDecimal.valueOf(Integer.valueOf(idAfiliado)));
         
         p.setNombre(nombre);
         p.setApellido(apellido);
@@ -143,7 +149,7 @@ public class PacienteController {
 //        p.setMadre(madre);
 //        p.setPadre(padre);
         
-        model.edit(p);
+        model.update(p);
 //       PacienteModel model= new PacienteModel();
 
 //       Pacientes aux= new Pacientes();

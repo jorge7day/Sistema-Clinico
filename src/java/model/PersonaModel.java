@@ -53,9 +53,7 @@ public void create(Persona p){
         
     }   
  }
-public String prueba(){
-    return "hola mama";
-}
+
 //Remove
 public void remove(Persona p){
     List <Persona> listaPersonas = new ArrayList<Persona>();
@@ -91,7 +89,7 @@ public void update(Persona p){
     }   
  }
 
-public Persona getPersonas(BigDecimal codPersona){
+public Persona getPersonaById(BigDecimal codPersona){
      PersonaModel listaPersonas=new PersonaModel();
     for(Persona persona:listaPersonas.getAll()){
         if(persona.getCodPersona().equals(codPersona))

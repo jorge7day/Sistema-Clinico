@@ -6,9 +6,9 @@
 package model;
 
 import entity.Rol;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.management.relation.Role;
 import org.hibernate.Session;
 
 /**
@@ -87,7 +87,7 @@ public class RolModel {
         }
     }
     
-    public Rol getRoles (int codRol){
+    public Rol getRolById (BigDecimal codRol){
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         Rol pac = new Rol();
         

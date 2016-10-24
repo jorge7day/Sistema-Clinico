@@ -6,6 +6,7 @@
 package model;
 
 import entity.Departamento;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -85,13 +86,13 @@ public void update(Departamento p){
     }   
  }
 
-public Departamento getDepartamentos (int idAfiliado){
+public Departamento getDepartamentoById (BigDecimal codDepartamento){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     Departamento pac = new Departamento();
     
     try{
         s.beginTransaction();
-        pac = (Departamento) s.get(Departamento.class, idAfiliado);
+        pac = (Departamento) s.get(Departamento.class, codDepartamento);
         
     }catch(Exception e){
         e.printStackTrace();

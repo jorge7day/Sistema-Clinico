@@ -5,7 +5,9 @@
  */
 package model;
 
+import controller.Sesion;
 import entity.Clinica;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -36,7 +38,7 @@ public class ClinicaModel {
 //Create
 public void create(Clinica p){
     List <Clinica> listaClinicas = new ArrayList<Clinica>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session s = Sesion.getSession();
     
     try{
         
@@ -70,22 +72,21 @@ public void remove(Clinica p){
 //Update
 public void update(Clinica p){
     List <Clinica> listaClinicas = new ArrayList<Clinica>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+    Session s = Sesion.getSession();
     
     try{
         
        s.beginTransaction();
-       s.update(p);
+       s.save(p);
        s.getTransaction().commit();
         
     }catch(Exception e){
         e.printStackTrace();
-        s.getTransaction().rollback();
         
-    }   
+    }    
  }
 
-public Clinica getClinicas (int codClinica){
+public Clinica getClinicaById (BigDecimal codClinica){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     Clinica pac = new Clinica();
     
