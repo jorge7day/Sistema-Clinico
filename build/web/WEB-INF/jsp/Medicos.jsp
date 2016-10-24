@@ -1,5 +1,28 @@
-<jsp:include page="plantilla head.jsp"></jsp:include>
-<title>M閐icos</title>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+  <html>
+    <head>
+        <c:url value="/resources/images/Logo.png" var="logoURL"/>
+        <c:url value="/resources/css/materialize.min.css" var="materializeURL"/>
+        <c:url value="/resources/css/index.css" var="indexURL"/>
+        <c:url value="/resources/css/ghpages-materialize.css" var="ghpagesURL"/>
+        <c:url value="/resources/css/prism.css" var="primURL"/>
+               
+    <!--<meta charset="UTF-8">-->
+    <link rel="shortcut icon" href="${logoURL}">
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="${materializeURL}"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="${indexURL}"  media="screen,projection"/>
+      <link href="${primURL}" rel="stylesheet">
+  	  <link href="${ghpagesURL}" type="text/css" rel="stylesheet" media="screen,projection">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>M茅dicos</title>
 </head>
 
    <body>
@@ -14,15 +37,16 @@
           <li><div class="divider"></div></li>
 
           <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Inicio</a></li>
+          <li class="bold active"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
           <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
-          <li class="bold active"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>M閐icos</a></li>
+          <li class="bold active"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>M茅dicos</a></li>
 
 
            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cl韓icas</a></li>
-            <li class="bold"><a href="index.htm" class="waves-effect waves-teclinicas.htmal"><i class="material-icons">create</i>Salir</a></li>
+            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cl铆nicas</a></li>
+            <li class="bold"><a href="index.htm" class="waves-effect waves-teclinicas.htmal"><i class="material-icons">create</i>Cerrar Sesi贸n</a></li>
 
           </ul>
 </header>
@@ -103,11 +127,11 @@
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate" maxlength="50">
+                  <input id="first_name" type="text" class="validate">
                   <label for="first_name">Nombres</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="last_name" type="text" maxlength="50" class="validate">
+                  <input id="last_name" type="text" class="validate">
                   <label for="last_name">Apellidos</label>
                 </div>
               </div>
@@ -117,27 +141,17 @@
                    <input type="date" class="datepicker" id="burnDate" required="">
                    <label for="burnDate">Fecha de nacimiento</label>
                 </div>
-                  <div class="input-field col s6">
-
-                   <div class="input-field col s6">
-                       <select>
-                           <option id="1">Soltero/a</option>
-                           <option id="2">Casado/a</option>
-                           <option id="3">Viudo/a</option>
-                       </select>
-                       <label>Estado civil</label>
-                   </div>
-                  
-                </div>
               </div>
-                <f:form action="addMedico" modelAtribute="Medico">
               <div class="row">
                   <div class="input-field col s6">
                         <select>
                           <option value="" disabled selected>Seleccionar Departamento</option>
-                          <c:forEach items="${listaDepartamentos}" var="dep">
-                          <option value="${dep.codDepartamento}">${dep.nombre}</option>
-                          </c:forEach>
+                          <option value="1">San Salvador</option>
+                          <option value="2">Santa Ana</option>
+                          <option value="3">Morazan</option>
+                          <option value="4">La Union</option>
+                          <option value="5">San Miguel</option>
+                          <option value="6">Cuscatlan</option>
 
                         </select>
                         <label>Departamento de residencia</label>
@@ -146,28 +160,22 @@
                       <div class="input-field col s6">
                         <select>
                           <option value="" disabled selected>Seleccionar Municipio</option>
-                          <c:forEach items="${listaMunicipios}" var="municipio">
-                          <option value="${municipio.codMunicipio}">${municipio.nombre}</option>    
-                              
-                          </c:forEach>
-                          
-                         
+                          <option value="1">Opcion 1</option>
+                          <option value="2">Opcion 2</option>
+                          <option value="3">Opcion 3</option>
                         </select>
                         <label>Municipio de residencia</label>
 
                       </div>
-                <div class="input-field col s6"  >
-                       <label for="first_name">Direccion</label>
-                      <input id="direccion" type="text" class="validate" maxlength="50">
                   </div>
 
               <div class="row">
                 <div class="input-field col s6">
                         <select>
                           <option value="" disabled selected>Seleccionar Clinica</option>
-                          <c:forEach items="${listaClinicas}" var="clinica">
-                              <option value="codClinica" >${clinica.nombre}</option>
-                          </c:forEach>
+                          <option value="1">Opci贸n 1</option>
+                          <option value="2">Opci贸n 2</option>
+                          <option value="3">Opci贸n 3</option>
                         </select>
                         <label>Clinica Asignada</label>
 
@@ -176,9 +184,9 @@
                 <div class="input-field col s6">
                         <select>
                           <option value="" disabled selected>Seleccionar Especialidad</option>
-                          <option value="1">Medico General</option>
-                          <option value="2">Cardiologo</option>
-                          
+                          <option value="1">Especialidad 1</option>
+                          <option value="2">Especialidad 2</option>
+                          <option value="3">Especialidad 3</option>
                         </select>
                         <label>Especialidad Medica</label>
 
@@ -187,20 +195,13 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="dui" type="text" class="validate" maxlength="50">
+                  <input id="dui" type="text" class="validate">
                   <label for="dui">DUI</label>
                 </div>
 
                 <div class="input-field col s6">
                   <input id="nit" type="text" class="validate">
                   <label for="nit">NIT</label>
-              </div>
-                    <div class="input-field col s6">
-                        <select id="genero">
-                            <option id="1">M</option>
-                            <option id="2">F</option>
-                        </select>
-                  <label for="nit">Genero</label>
               </div>
 
               </div>
@@ -212,7 +213,7 @@
 
                 <div class="input-field col s6">
                   <input id="password" type="text" class="validate">
-                  <label for="password">Contrase馻</label>
+                  <label for="password">Contrase帽a</label>
               </div>
  
               </div>

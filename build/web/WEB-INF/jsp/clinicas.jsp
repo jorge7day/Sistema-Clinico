@@ -37,6 +37,8 @@
 
           <li><div class="divider"></div></li>
 
+          <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
+          <li class="bold"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
           <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
           <li class="bold"><a href="Medicos.html" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
 
@@ -45,7 +47,7 @@
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
             <li class="bold active"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
-            <li class="bold"><a href="login.html" class="waves-effect waves-teal"><i class="material-icons">create</i>Salir</a></li>
+            <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
 
           </ul>
 </header>
@@ -69,87 +71,44 @@
 
 
   <!-- AGREGAR Clínica--> 
-
-  <!-- Modal Trigger -->
   <br>
-        <br>
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">person_add</i>Agregar Clínica</a>
+    <a href="crearClinicas.htm" class="waves-effect waves-teal btn"><i class="material-icons">book</i>Crear Clínica</a>
+  
+<!-- tabla de resultados -->
+<a href="getAllClinicas.htm" class="waves-effect waves-teal btn"><i class="material-icons">book</i>Ver Clínicas</a>
+  <br>
+  <br>
+  
+<div class="container">
+<table class="highlight centered">
+        <thead>
+          <tr>
+              <th data-field="id">ID </th>
+              <th data-field="name">Sucursal</th>
+              <th data-field="price">Direccion</th>
+              <th data-field="price">Teléfono</th>   
+              <th data-field="price">Opciones</th>  
+          </tr>
+        </thead>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-        
-        
-      <h4>Agregar Clínica</h4>
-    </div>
-
-
-  <div class="row">
-            <form class="col s12">
-              <div class="row">
-                  <div class="input-field col s3">
-                  <input id="id" type="text" class="validate">
-                  <label for="id">ID</label>
-                </div>
-                  
-                <div class="input-field col s3">
-                  <input id="Sucursal" type="text" class="validate">
-                  <label for="Sucursal">Nombre de la Sucursal</label>
-                </div>
-                <div class="input-field col s3">
-                  <input id="Dirección" type="text" class="validate">
-                  <label for="Dirección">Dirección</label>
-                </div>
-                <div class="input-field col s3">
-                  <input id="telefono" type="text" class="validate">
-                  <label for="telefono">Teléfono</label>
-                </div>
-              </div>
-              </div>
-
-               
-
-              <div class="row">
-                  <div class="input-field col s6">
-                        <select>
-                          <option value="" disabled selected>Seleccionar Departamento</option>
-                          <option value="1">San Salvador</option>
-                          <option value="2">Santa Ana</option>
-                          <option value="3">Morazán</option>
-                          <option value="4">La Unión</option>
-                          <option value="5">San Miguel</option>
-                          <option value="6">Cuscatlán</option>
-
-                        </select>
-                        <label>Departamento</label>
-                      </div>
-
-                      <div class="input-field col s6">
-                        <select>
-                          <option value="" disabled selected>Seleccionar Municipio</option>
-                          <option value="1">Opción 1</option>
-                          <option value="2">Opción 2</option>
-                          <option value="3">Opción 3</option>
-                        </select>
-                        <label>Municipio</label>
-
-                      </div>
-                  </div>
-
-                  <!--Botones guardar/cancelar -->
-                <div class="row">
-                  <div class="col m6 offset-m6">
-                      <button class="btn waves-effect waves-light" type="submit" name="action">Guardar</button>
-                          <a href="#!" class=" modal-action modal-close waves-effect #e53935 red darken-1 waves-red btn-flat white-text">Cancelar</a>
-                       </div>
-                </div>
-                
-            </form>
-          </div>
-                    
-  </div>
-
-   <!-- FIN MODAL AGREGAR Clinica--> 
+        <c:forEach items ="${listaClinicas}" var ="pac">
+        <tbody>
+          <tr>
+            <td>${pac.codclinica}</td>
+            <td>${pac.nombre}</td>
+            <td>${pac.direccion}</td>
+            <td>${pac.telefono}</td>
+            
+            <td>
+            <a href="editClinicas.htm?codlinica=${pac.codclinica}">Editar </a>
+            
+            </td>
+          </tr>        
+        </tbody>
+        </c:forEach>
+      </table>
+    
+</div>
 
       
 

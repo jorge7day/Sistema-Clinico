@@ -33,41 +33,23 @@
 <header>
   <div class="container "><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
         <ul id="nav-mobile" class="side-nav fixed">
-          <img src="Images/logo3.png" width="300px">
+          <img src="resources/images/Logo3.png" width="300px">
 
           <li><div class="divider"></div></li>
 
-          <li class="bold"><a href="libro_diario.html" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
+          <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
+          <li class="bold"><a href="usuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
+          <li class="bold"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
+          <li class="bold"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
 
-          <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-              <li class="bold "><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons ">assessment</i>MÃ©dicos</a>
-                <div class="collapsible-body">
-                  <ul>
-                    <li><a href="balance_comprobacion.html">Balance de comprobaciÃ³n</a></li>
-                    <li><a href="estado_resultados.html">Estado de resultados</a></li>
-                    <li><a href="estado_capital.html">Estado de capital </a></li>
-                    <li><a href="balance_general.html">Balance general</a></li>
-                  </ul>
-                </div>
-              </li>
 
-           <li class="bold"><a href="ajustes_financieros.html" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
-           <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a>
-           <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">create</i>ClÃ­nicas</a>
-                <div class="collapsible-body">
-                    <ul>
-                          <li><a href="empleados.html">Empleados</a></li>
-                          <li><a href="usuarios.html">Usuarios</a></li>
-                          <li><a href="proveedores.html">Proveedores</a></li>
-                    </ul>
-                </div>
-            </li>
+           <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
+            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
+            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
+            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
+            <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
+
           </ul>
-        </li>
-
-        <li class="bold"><a href="login.html" class="waves-effect waves-teal"><i class="material-icons">close</i>Salir</a></li>
-      </ul>
 </header>
 <!-- FIN Barra Lateral-->
 <main>

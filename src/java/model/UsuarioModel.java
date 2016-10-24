@@ -19,26 +19,6 @@ import org.hibernate.Session;
  */
 public class UsuarioModel {
     
-    private Session s;
-
-    public UsuarioModel() {
-        s = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
-    
-//    private Session getSession() {
-////        if (s == null) {
-////            s = HibernateUtil.getSessionFactory().getCurrentSession();
-////        }
-//        
-//        return s;
-//    }
-//    
-//    private void closeSession() {
-//        if(s != null) {
-//            s.disconnect();
-//        }
-//    }
-    
     public List <Usuario> getAll(){
         List <Usuario> lista = new ArrayList<>();
         Session s = Sesion.getSession();
@@ -48,6 +28,7 @@ public class UsuarioModel {
             s.beginTransaction();
             lista = s.createCriteria(Usuario.class).list();
             s.getTransaction().commit();
+            
         }catch(Exception e){
             e.printStackTrace();
             
@@ -67,6 +48,7 @@ public class UsuarioModel {
             s.beginTransaction();
             s.save(u);
             s.getTransaction().commit();
+            
         }catch(Exception e){
             e.printStackTrace();
             
@@ -84,8 +66,10 @@ public class UsuarioModel {
             s.beginTransaction();
             s.delete(u);
             s.getTransaction().commit();
+            
         }catch(Exception e){
-            e.printStackTrace();            
+            e.printStackTrace();
+            
         }
             Sesion.closeSession();
     }
@@ -116,7 +100,6 @@ public class UsuarioModel {
         try{
             s.beginTransaction();
             pac = (Usuario) s.get(Usuario.class, codUsuario);
-            
             
         }catch(Exception e){
             e.printStackTrace();

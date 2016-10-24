@@ -44,27 +44,24 @@ public class PacienteController {
     public String getAll(Model m){
     PacienteModel model= new PacienteModel();
     m.addAttribute("listaPacientes",model.getAll());
-    PersonaModel personas= new PersonaModel();
-    m.addAttribute("listaPersonas",personas);
-    
     
     return "pacientes2"; //Pag donde se muestran los datos
     }
     
     //Para eliminar
     
-    @RequestMapping(value = "remove", method = RequestMethod.GET)
-    public String remove(@RequestParam(value = "idAfiliado") BigDecimal idAfiliado, Model m) {
-
-        //java.math.BigDecimal bd = new java.math.BigDecimal(String.valueOf(idAfiliado));
-        PacienteModel model = new PacienteModel();
-        Paciente e = new Paciente();
-        e = model.getPacientes(idAfiliado);
-        model.remove(e);
-                    
-
-        return "redirect:getAll.htm";
-    }
+//    @RequestMapping(value = "remove", method = RequestMethod.GET)
+//    public String remove(@RequestParam(value = "idAfiliado") String idAfiliado, Model m) {
+//
+//        //java.math.BigDecimal bd = new java.math.BigDecimal(String.valueOf(idAfiliado));
+//        PacienteModel model = new PacienteModel();
+//        Pacientes e = new Pacientes();
+//        e = model.getPacientes(idAfiliado);
+//        model.remove(e);
+//                    
+//
+//        return "redirect:getAll.htm";
+//    }
     
     //Crear Paciente
      @RequestMapping(value="crear",method = RequestMethod.GET)
@@ -92,10 +89,76 @@ public class PacienteController {
         
         PacienteModel model=new PacienteModel();
         model.create(p);
-        
+        int a=0;
+        if(a==0){
         return "redirect:getAll.htm";
+        }
+         return "index";
+        
     }
     
+    @RequestMapping(value="edit",method = RequestMethod.GET)
+    public String edit(@RequestParam(value="idAfiliado") String idAfiliado, Model m)
+    {
+        //java.math.BigDecimal bd=new java.math.BigDecimal(String.valueOf(idAfiliado));
+        PacienteModel model= new PacienteModel();
+       
+        Pacientes p =new Pacientes();
+//        Departamento dp=new Departamento();
+//        DepartamentoModel dpModel= new DepartamentoModel();
+        p=model.getPacientes(idAfiliado); //Se obtiene el paciente segun si Id que es un String
+//        dp=dpModel.getDepartamento(p.getDepartamento().getId());
+        
+        m.addAttribute("p",p);
+        //m.addAttribute("d", dp);
+      //  m.addAttribute("d",p.getDepartamento());
+        
+        return "editarPacientes"; //pagina a donde llegará
+    }
     
-    
+    @RequestMapping(value = "update",method=RequestMethod.POST)
+    public String update(
+    @RequestParam(value = "idAfiliado") String idAfiliado,
+    @RequestParam(value = "nombre") String nombre,
+    @RequestParam(value = "apellido") String apellido,
+    @RequestParam(value = "direccion") String direccion,
+    @RequestParam(value = "profesion") String profesion,
+    @RequestParam(value = "dui") String dui,
+    @RequestParam(value = "fechaNacimiento") Date fechaNacimiento
+    )
+            
+    {
+        
+        PacienteModel model = new PacienteModel();
+        
+        Pacientes p = model.getPacientes(idAfiliado);
+        
+        p.setNombre(nombre);
+        p.setApellido(apellido);
+        p.setFechaNacimiento(fechaNacimiento);
+       // p.setConyuge(conyuge);
+        p.setDireccion(direccion);
+        p.setDui(dui);
+         p.setProfesion(profesion);
+//        p.setMadre(madre);
+//        p.setPadre(padre);
+        
+        model.edit(p);
+//       PacienteModel model= new PacienteModel();
+
+//       Pacientes aux= new Pacientes();
+//       aux=model.getPacientes(p.getIdAfiliado());
+//        aux.setNombre(p.getNombre());
+//        aux.setApellido(p.getApellido());
+//        aux.setFechaNacimiento(p.getFechaNacimiento());
+//        aux.setConyuge(p.getConyuge());
+//        aux.setDui(p.getDui());
+//        aux.setProfesion(p.getProfesion());
+//        aux.setPadre(p.getPadre());
+//        aux.setMadre(p.getMadre());
+//        
+//        aux.setDireccion(p.getDireccion());
+//        model.edit(aux);
+        return "redirect:getAll.htm";
+    }
 }

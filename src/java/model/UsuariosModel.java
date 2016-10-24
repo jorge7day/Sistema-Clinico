@@ -5,7 +5,9 @@
  */
 package model;
 
+
 import entity.Pacientes;
+import entity.Usuarios;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -14,31 +16,29 @@ import org.hibernate.Session;
  *
  * @author Daniel
  */
-public class PacienteModel {
+public class UsuariosModel {
     
-//CRUD
-public List <Pacientes> getAll(){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
+    public List <Usuarios> getAllUsers(){
+    List <Usuarios> listaUsuarios = new ArrayList<Usuarios>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
         
        s.beginTransaction();
-       listaPacientes = s.createCriteria(Pacientes.class).list();
+       listaUsuarios = s.createCriteria(Usuarios.class).list();
        s.getTransaction().commit();
-       HibernateUtil.getSessionFactory().getCurrentSession().close(); //Se debe cerrar la sesión después de cada transacción
-
+        
     }catch(Exception e){
         e.printStackTrace();
         
     }
     
-    return listaPacientes;
+    return listaUsuarios;
  }
-
-//Create
-public void create(Pacientes p){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
+    
+    //Create
+public void createUsers(Usuarios p){
+    List <Usuarios> listaUsuarios = new ArrayList<Usuarios>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
@@ -53,26 +53,46 @@ public void create(Pacientes p){
     }   
  }
 
-//Remove
-public void remove(Pacientes p){
-    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    
-    try{
+//Eliminar Usuario
+public void remove(Usuarios p)
+    {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            s.beginTransaction();
+            s.delete(p);
+            s.getTransaction().commit();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+              s.getTransaction().rollback();
+        }
+    }
+
+//obtenerUsuario
+public Usuarios getUsuario(String nombreUsuario){
+          
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Usuarios p=new Usuarios();
         
-       s.beginTransaction();
-       s.delete(p);
-       s.getTransaction().commit();
+        try {
+            s.beginTransaction();
+            p=(Usuarios) s.get(Usuarios.class, nombreUsuario);
+            HibernateUtil.getSessionFactory().getCurrentSession().close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            s.getTransaction().rollback();
+        }
         
-    }catch(Exception e){
-        e.printStackTrace();
-        
-    }   
- }
+     return p;
+      
+      }
 
 //Update
-public void update(Paciente p){
-    List <Paciente> listaPacientes = new ArrayList<Paciente>();
+public void update(Usuarios p){
+    List <Pacientes> listaPacientes = new ArrayList<Pacientes>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
@@ -88,23 +108,8 @@ public void update(Paciente p){
     }   
  }
 
-public Pacientes getPacientes (String idAfiliado){
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    Pacientes pac = new Pacientes();
-    
-    try{
-        s.beginTransaction();
-        pac = (Pacientes) s.get(Pacientes.class, idAfiliado);
-        HibernateUtil.getSessionFactory().getCurrentSession().close();
-    }catch(Exception e){
-        e.printStackTrace();
-    }
-    
-    return pac;
-}
-
 //edit
-      public void edit(Pacientes p)
+      public void edit(Usuarios p)
     {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
@@ -119,6 +124,5 @@ public Pacientes getPacientes (String idAfiliado){
         }
     }
     
+    
 }
-
-

@@ -9,10 +9,9 @@ import entity.Usuario;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import model.UsuarioModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,14 +58,14 @@ public class sesionController {
             }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(sesionController.class.getName()).log(Level.SEVERE, null, ex);
-            return "redirect:index.htm";
+            return "redirect:index.htm"; 
         }
     }
     
     public String isLogged() {
-        return (user != null)? "redirect:index.htm": "redirect:index.htm";
+        return (user != null)? "redirect:index.htm": "redirect:index.htm";        
     }
-    
+
     @RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
     public String logout() {
         this.user = null;
