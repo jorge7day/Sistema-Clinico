@@ -41,8 +41,9 @@ public void create(Clinica p){
     Session s = Sesion.getSession();
     
     try{
-        
-       s.beginTransaction();
+        if (s.getTransaction().isActive() == false) {
+        s.beginTransaction();
+        }
        s.save(p);
        s.getTransaction().commit();
         
