@@ -64,7 +64,7 @@ public class Empleado  implements java.io.Serializable {
         this.codEmpleado = codEmpleado;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_PERSONA")
     public Persona getPersona() {
         return this.persona;
@@ -74,7 +74,7 @@ public class Empleado  implements java.io.Serializable {
         this.persona = persona;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_CLINICA")
     public Clinica getClinica() {
         return this.clinica;
@@ -104,7 +104,7 @@ public class Empleado  implements java.io.Serializable {
         this.puesto = puesto;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="empleado")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="empleado")
     public Set<Medico> getMedicos() {
         return this.medicos;
     }

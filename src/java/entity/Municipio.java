@@ -59,7 +59,7 @@ public class Municipio  implements java.io.Serializable {
         this.codMunicipio = codMunicipio;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_DEPARTAMENTO", nullable=false)
     public Departamento getDepartamento() {
         return this.departamento;
@@ -79,7 +79,7 @@ public class Municipio  implements java.io.Serializable {
         this.nombre = nombre;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="municipio")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="municipio")
     public Set<Persona> getPersonas() {
         return this.personas;
     }
@@ -88,7 +88,7 @@ public class Municipio  implements java.io.Serializable {
         this.personas = personas;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="municipio")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="municipio")
     public Set<Clinica> getClinicas() {
         return this.clinicas;
     }

@@ -67,7 +67,7 @@ public class Clinica  implements java.io.Serializable {
         this.codClinica = codClinica;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_DEPARTAMENTO", nullable=false)
     public Departamento getDepartamento() {
         return this.departamento;
@@ -77,7 +77,7 @@ public class Clinica  implements java.io.Serializable {
         this.departamento = departamento;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_MUNICIPIO", nullable=false)
     public Municipio getMunicipio() {
         return this.municipio;
@@ -117,7 +117,7 @@ public class Clinica  implements java.io.Serializable {
         this.direccion = direccion;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="clinica")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="clinica")
     public Set<Expediente> getExpedientes() {
         return this.expedientes;
     }
@@ -126,7 +126,7 @@ public class Clinica  implements java.io.Serializable {
         this.expedientes = expedientes;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="clinica")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="clinica")
     public Set<Empleado> getEmpleados() {
         return this.empleados;
     }

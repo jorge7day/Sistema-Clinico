@@ -65,7 +65,7 @@ public class Departamento  implements java.io.Serializable {
         this.nombre = nombre;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="departamento")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="departamento")
     public Set<Persona> getPersonas() {
         return this.personas;
     }
@@ -74,7 +74,7 @@ public class Departamento  implements java.io.Serializable {
         this.personas = personas;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="departamento")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="departamento")
     public Set<Municipio> getMunicipios() {
         return this.municipios;
     }
@@ -83,7 +83,7 @@ public class Departamento  implements java.io.Serializable {
         this.municipios = municipios;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="departamento")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="departamento")
     public Set<Clinica> getClinicas() {
         return this.clinicas;
     }

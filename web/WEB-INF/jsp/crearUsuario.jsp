@@ -41,7 +41,7 @@
 
           <li class="bold"><a href="principal.htm" class="waves-effect waves-teal"><i class="material-icons">home</i>Inicio</a></li>
 
-          <li class="bold active"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
+          <li class="bold active"><a href="getAllUsuarios.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Usuarios</a></li>
           <li class="bold active"><a href="pacientes2.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Pacientes</a></li>
           <li class="bold"><a href="medicos.htm" class="waves-effect waves-teal"><i class="material-icons">book</i>Médicos</a></li>
 
@@ -49,7 +49,7 @@
            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
+            <li class="bold"><a href="getAllClinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
             <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
 
           </ul>
@@ -121,7 +121,7 @@
 <!--    <i class="material-icons right">send</i>-->
   </button>
     
-       <a class="waves-effect waves-light btn red"  href="usuarios.htm"><i class="material-icons left ">person_add</i>Cancelar</a>
+       <a class="waves-effect waves-light btn red"  href="getAllUsuarios.htm"><i class="material-icons left ">person_add</i>Cancelar</a>
         
        
    </f:form>

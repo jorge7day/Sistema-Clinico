@@ -5,11 +5,11 @@
  */
 package model;
 
-import controller.Sesion;
 import entity.Municipio;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -23,7 +23,11 @@ public class MunicipioModel {
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        listaMunicipios = s.createCriteria(Municipio.class).list();
        s.getTransaction().commit();
@@ -42,7 +46,11 @@ public void create(Municipio p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.save(p);
        s.getTransaction().commit();
@@ -59,7 +67,11 @@ public void remove(Municipio p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.delete(p);
        s.getTransaction().commit();
@@ -76,7 +88,11 @@ public void update(Municipio p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.update(p);
        s.getTransaction().commit();
@@ -89,13 +105,22 @@ public void update(Municipio p){
  }
 
 public Municipio getMunicipioById (BigDecimal codMunicipio){
-    Session s = Sesion.getSession();
+    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     Municipio pac = new Municipio();
     
     try{
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
         s.beginTransaction();
-        pac = (Municipio) s.get(Municipio.class, codMunicipio);
-        
+//        pac = (Municipio) s.get(Municipio.class, codMunicipio);
+        Query q = s.createQuery("from Municipio u where u.codMunicipio = :cMunicipio");
+        q.setBigDecimal("cMunicipio", codMunicipio);
+        pac = (Municipio) q.uniqueResult();
+        s.getTransaction().commit();
+
     }catch(Exception e){
         e.printStackTrace();
     }

@@ -6,6 +6,14 @@
 <head>
     <c:url value="/resources/css/materialize.min.css" var="materializeURL"/>
     <c:url value="/resources/images/Logo.png" var="logoURL"/>
+     <c:url value="/resources/Login/materialize.css" var="loginURL"/>
+    <c:url value="/resources/Login/style.css" var="styleloginURL"/>
+    <c:url value="/resources/Login/custom.css" var="customloginURL"/>
+    <c:url value="/resources/Login/page-center.css" var="pageloginURL"/>
+    <c:url value="/resources/Login/prism.css" var="prismloginURL"/>
+    <c:url value="/resources/Login/perfect-scrollbar.css" var="scrollbarURL"/>
+    <c:url value="/resources/Login/page-center.css" var="pageloginURL"/>
+     <c:url value="/resources/css/index.css" var="pageindexURL"/>
     
   <!--<meta charset="UTF-8">-->
   <link rel="shortcut icon" href="${logoURL}">
@@ -13,6 +21,9 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="${materializeURL}"/>
+
+
+  
 
   <title>Inicio</title>
 </head>
@@ -34,12 +45,14 @@
            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clinicas</a></li>
+            <li class="bold"><a href="getAllClinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clinicas</a></li>
             <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
 
           </ul>
 </header>
 <!-- FIN Barra Lateral-->
+
+
 
 
   <script type="js/jquery.js"></script>

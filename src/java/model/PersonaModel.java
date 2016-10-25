@@ -24,7 +24,11 @@ public List <Persona> getAll(){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        listaPersonas = s.createCriteria(Persona.class).list();
        s.getTransaction().commit();
@@ -39,11 +43,14 @@ public List <Persona> getAll(){
 
 //Create
 public void create(Persona p){
-    List <Persona> listaPersonas = new ArrayList<Persona>();
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.save(p);
        s.getTransaction().commit();
@@ -60,7 +67,11 @@ public void remove(Persona p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.delete(p);
        s.getTransaction().commit();
@@ -77,7 +88,11 @@ public void update(Persona p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
        s.beginTransaction();
        s.update(p);
        s.getTransaction().commit();

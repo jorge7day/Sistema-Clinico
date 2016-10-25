@@ -56,7 +56,7 @@ public class Paciente  implements java.io.Serializable {
         this.idAfiliado = idAfiliado;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_PERSONA", nullable=false)
     public Persona getPersona() {
         return this.persona;
@@ -66,7 +66,7 @@ public class Paciente  implements java.io.Serializable {
         this.persona = persona;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="paciente")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="paciente")
     public Set<Expediente> getExpedientes() {
         return this.expedientes;
     }
@@ -75,7 +75,7 @@ public class Paciente  implements java.io.Serializable {
         this.expedientes = expedientes;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="paciente")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="paciente")
     public Set<Signosvitales> getSignosvitaleses() {
         return this.signosvitaleses;
     }

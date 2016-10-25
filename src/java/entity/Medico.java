@@ -46,7 +46,7 @@ public class Medico  implements java.io.Serializable {
         this.codMedico = codMedico;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_ESPECIALIDAD", nullable=false)
     public Especialidad getEspecialidad() {
         return this.especialidad;
@@ -56,7 +56,7 @@ public class Medico  implements java.io.Serializable {
         this.especialidad = especialidad;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_EMPLEADO", nullable=false)
     public Empleado getEmpleado() {
         return this.empleado;

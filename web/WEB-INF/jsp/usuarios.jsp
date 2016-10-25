@@ -47,7 +47,7 @@
            <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
             <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-            <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
+            <li class="bold"><a href="getAllClinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
             <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
 
           </ul>
@@ -91,7 +91,7 @@
               <th data-field="id">Nickname </th>
               <th data-field="name">Contraseña</th>
               <th data-field="price">Rol</th>
-              <th data-field="price">CodPersona</th>
+              <th data-field="price">Persona</th>
               <th data-field="price">Opciones</th>
           </tr>
         </thead>

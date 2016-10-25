@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package model;
 
 import entity.Departamento;
@@ -16,89 +16,91 @@ import org.hibernate.Session;
  * @author carlosantonio
  */
 public class DepartamentoModel {
-     public List <Departamento> getAll(){
-    List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    
-    try{
+    public List <Departamento> getAll(){
+        List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
-       s.beginTransaction();
-       listaDepartamentos = s.createCriteria(Departamento.class).list();
-       s.getTransaction().commit();
+        try{
+            
+            s.beginTransaction();
+            listaDepartamentos = s.createCriteria(Departamento.class).list();
+            s.getTransaction().commit();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
         
-    }catch(Exception e){
-        e.printStackTrace();
-        
+        return listaDepartamentos;
     }
     
-    return listaDepartamentos;
- }
-
 //Create
-public void create(Departamento p){
-    List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    
-    try{
+    public void create(Departamento p){
+        List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
-       s.beginTransaction();
-       s.save(p);
-       s.getTransaction().commit();
-        
-    }catch(Exception e){
-        e.printStackTrace();
-        
-    }   
- }
-
-//Remove
-public void remove(Departamento p){
-    List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    
-    try{
-        
-       s.beginTransaction();
-       s.delete(p);
-       s.getTransaction().commit();
-        
-    }catch(Exception e){
-        e.printStackTrace();
-        
-    }   
- }
-
-//Update
-public void update(Departamento p){
-    List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    
-    try{
-        
-       s.beginTransaction();
-       s.update(p);
-       s.getTransaction().commit();
-        
-    }catch(Exception e){
-        e.printStackTrace();
-        s.getTransaction().rollback();
-        
-    }   
- }
-
-public Departamento getDepartamentoById (BigDecimal codDepartamento){
-    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-    Departamento pac = new Departamento();
-    
-    try{
-        s.beginTransaction();
-        pac = (Departamento) s.get(Departamento.class, codDepartamento);
-        
-    }catch(Exception e){
-        e.printStackTrace();
+        try{
+            
+            s.beginTransaction();
+            s.save(p);
+            s.getTransaction().commit();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
     }
     
-    return pac;
-}
+//Remove
+    public void remove(Departamento p){
+        List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        
+        try{
+            
+            s.beginTransaction();
+            s.delete(p);
+            s.getTransaction().commit();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
+    }
+    
+//Update
+    public void update(Departamento p){
+        List <Departamento> listaDepartamentos = new ArrayList<Departamento>();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        
+        try{
+            
+            s.beginTransaction();
+            s.update(p);
+            s.getTransaction().commit();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            s.getTransaction().rollback();
+            
+        }
+    }
+    
+    public Departamento getDepartamentoById (BigDecimal codDepartamento){
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Departamento pac = new Departamento();
+        
+        try{
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
+            pac = (Departamento) s.get(Departamento.class, codDepartamento);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return pac;
+    }
     
 }

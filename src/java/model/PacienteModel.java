@@ -6,7 +6,7 @@
 package model;
 
 import entity.Paciente;
-//import entity.Pacientes;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -23,8 +23,12 @@ public List <Paciente> getAll(){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
-       s.beginTransaction();
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
        listaPacientes = s.createCriteria(Paciente.class).list();
        s.getTransaction().commit();
        HibernateUtil.getSessionFactory().getCurrentSession().close(); //Se debe cerrar la sesión después de cada transacción
@@ -44,7 +48,13 @@ public void create(Paciente p){
     
     try{
         
-       s.beginTransaction();
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
+        
        s.save(p);
        s.getTransaction().commit();
         
@@ -60,8 +70,12 @@ public void remove(Paciente p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
-       s.beginTransaction();
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
        s.delete(p);
        s.getTransaction().commit();
         
@@ -77,8 +91,12 @@ public void update(Paciente p){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     
     try{
-        
-       s.beginTransaction();
+       if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
        s.update(p);
        s.getTransaction().commit();
         
@@ -89,12 +107,17 @@ public void update(Paciente p){
     }   
  }
 
-public Paciente getPacienteById (String idAfiliado){
+public Paciente getPacienteById (BigDecimal idAfiliado){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     Paciente pac = new Paciente();
     
     try{
-        s.beginTransaction();
+        if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
         pac = (Paciente) s.get(Paciente.class, idAfiliado);
         HibernateUtil.getSessionFactory().getCurrentSession().close();
     }catch(Exception e){
@@ -109,8 +132,13 @@ public Paciente getPacienteById (String idAfiliado){
     {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
-            s.beginTransaction();
-            s.saveOrUpdate(p);
+            if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
+            }
+                s.beginTransaction();
+            s.update(p);
             s.getTransaction().commit();
 
         } catch (Exception e) {

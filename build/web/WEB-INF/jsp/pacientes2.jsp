@@ -47,7 +47,7 @@
                 <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">settings</i>Laboratoristas</a></li>
                 <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Enfermeras</a></li>
                 <li class="bold"><a href="" class="waves-effect waves-teal"><i class="material-icons">create</i>Secretarias</a></li>
-                <li class="bold"><a href="clinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
+                <li class="bold"><a href="getAllClinicas.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Clínicas</a></li>
                 <li class="bold"><a href="index.htm" class="waves-effect waves-teal"><i class="material-icons">create</i>Cerrar Sesión</a></li>
                 
             </ul>
@@ -216,7 +216,6 @@
                                 
                                 <td>
                                     <a href="edit.htm?idAfiliado=${pac.idAfiliado}">Editar </a>
-                                    <!--<a href="remove.htm?id=${pac.IdAfiliado}" onclick="return confirm('Are you sure?')"> Eliminar</a>-->
                                 </td>
                             </tr>        
                         </tbody>

@@ -150,14 +150,11 @@ return "editarUsuario"; //pagina a donde llegará
 //        Usuario u = model.findUsuarioByUserName(nombreUsuario);
         Usuario u = model.findUsuarioById(codUsuario);
         
-        Persona p = (new PersonaModel()).getPersonaById(codPersona);
-        Rol rol = (new RolModel()).getRolById(codRol);
+        u.setPersona((new PersonaModel()).getPersonaById(codPersona));
+        u.setRol((new RolModel()).getRolById(codRol));
         
         u.setNombre(nombreUsuario);
         u.setContrasena(encrypt(password));
-        
-        u.setPersona(p);
-        u.setRol(rol);
         
         model.update(u);
         

@@ -25,7 +25,9 @@ public class UsuarioModel {
         
         try{
             
-            s.beginTransaction();
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
             org.hibernate.Query q = s.createQuery("from Usuario u");
             lista = q.list();
             s.getTransaction().commit();
@@ -41,7 +43,9 @@ public class UsuarioModel {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
-            
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
 //            s.beginTransaction();
 s.save(u);
 s.getTransaction().commit();
@@ -59,7 +63,9 @@ s.getTransaction().commit();
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
-            s.beginTransaction();
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
 //            Usuario ux = (Usuario) s.merge(u);
 s.delete(u);
 s.getTransaction().commit();
@@ -76,9 +82,13 @@ s.getTransaction().commit();
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         
         try{
-            if (s.getTransaction().isActive() == false) {
+            if (s.getTransaction().isActive() != false) {
+                s.close();
+                HibernateUtil.getSessionFactory().openSession();
+                s = HibernateUtil.getSessionFactory().getCurrentSession();
                 s.beginTransaction();
             }
+            
             s.update(u);
             s.getTransaction().commit();
             
@@ -87,7 +97,6 @@ s.getTransaction().commit();
             s.getTransaction().rollback();
             
         }
-//            Sesion.closeSession();
     }
     
     public Usuario findUsuarioById (BigDecimal codUsuario){
@@ -95,7 +104,9 @@ s.getTransaction().commit();
         Usuario pac = new Usuario();
         
         try{
-            s.beginTransaction();
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
             pac = (Usuario) s.get(Usuario.class, codUsuario);
             s.getTransaction().commit();
         }catch(Exception e){
@@ -111,7 +122,9 @@ return pac;
         Usuario u = null;
         
         try{
-            s.beginTransaction();
+            if (s.getTransaction().isActive() == false) {
+                s.beginTransaction();
+            }
             org.hibernate.Query q = s.createQuery("from Usuario u where u.nombre = :userName");
             q.setString("userName", userName);
             

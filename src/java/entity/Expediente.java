@@ -57,7 +57,7 @@ public class Expediente  implements java.io.Serializable {
         this.codExpediente = codExpediente;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="COD_CLINICA")
     public Clinica getClinica() {
         return this.clinica;
@@ -67,7 +67,7 @@ public class Expediente  implements java.io.Serializable {
         this.clinica = clinica;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="ID_AFILIADO", nullable=false)
     public Paciente getPaciente() {
         return this.paciente;
